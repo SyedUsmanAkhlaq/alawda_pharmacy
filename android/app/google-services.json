@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "638941487390",
+    "firebase_url": "https://alawdapharmacy-36be5.firebaseio.com",
+    "project_id": "alawdapharmacy-36be5",
+    "storage_bucket": "alawdapharmacy-36be5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638941487390:android:679efa9a9a5cbed80b290f",
+        "android_client_info": {
+          "package_name": "com.weanio.alawda_pharmacy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638941487390-kau9n1ntdhin3igjj53qlvhlvuj9kaeq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGRhOlysSm7dMsm9xbuVOUv9cF6PkU_2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638941487390-kau9n1ntdhin3igjj53qlvhlvuj9kaeq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

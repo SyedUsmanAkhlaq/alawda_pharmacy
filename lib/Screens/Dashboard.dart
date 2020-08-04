@@ -1,4 +1,12 @@
+import 'package:alawda_pharmacy/Screens/AppDrawer.dart';
+import 'package:alawda_pharmacy/Screens/AskPharmacist.dart';
+import 'package:alawda_pharmacy/Screens/BabyMom.dart';
+import 'package:alawda_pharmacy/Screens/Equipment.dart';
+import 'package:alawda_pharmacy/Screens/Registration.dart';
+import 'package:alawda_pharmacy/Screens/Skincare.dart';
+import 'package:alawda_pharmacy/Screens/Vitamins.dart';
 import 'package:flutter/material.dart';
+import 'Medicine.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -12,7 +20,14 @@ class Dashboard extends StatelessWidget {
               Row(
                 children: <Widget>[
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AppDrawer(),
+                        ),
+                      );
+                    },
                     icon: Icon(Icons.reorder),
                   ),
                   Spacer(flex: 2),
@@ -21,7 +36,16 @@ class Dashboard extends StatelessWidget {
                     scale: 15,
                   ),
                   Spacer(),
-                  IconButton(icon: Icon(Icons.person), onPressed: null),
+                  IconButton(
+                      icon: Icon(Icons.person),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Registeration(),
+                          ),
+                        );
+                      }),
                   IconButton(icon: Icon(Icons.shopping_cart), onPressed: null),
                 ],
               ),
@@ -51,60 +75,47 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/green.jpg'),
-                        fit: BoxFit.cover,
-                      ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AskPharmacist(),
                     ),
-                    height: 130,
-                    width: 170,
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.circular(5),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/sugar.jpg'),
-                        fit: BoxFit.cover,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  height: 120,
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
-                    height: 130,
-                    width: 170,
-                  ),
-                ],
-              ),
-              SizedBox(height: 5),
-              Container(
-                width: MediaQuery.of(context).size.width / 1.1,
-                height: 120,
-                color: Colors.blueAccent,
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(90),
-                        image: DecorationImage(
-                          image: AssetImage('images/doc.jpg'),
-                          fit: BoxFit.cover,
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(90),
+                          image: DecorationImage(
+                            image: AssetImage('images/doc.jpg'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
+                        height: 100,
+                        width: 100,
                       ),
-                      height: 100,
-                      width: 100,
-                    ),
-                    SizedBox(
-                      width: 45,
-                    ),
-                    Text(
-                      'Ask the Pharmacist',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 45,
+                      ),
+                      Text(
+                        'Ask the Pharmacist',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -113,62 +124,64 @@ class Dashboard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    width: 170,
-                    height: 150,
+                  MenuCard(
+                    label: 'Medicine',
+                    imagePath: 'images/medicine.webp',
                     color: Colors.green,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(90),
-                            image: DecorationImage(
-                              image: AssetImage('images/medicine.webp'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          height: 80,
-                          width: 80,
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Medicine(),
                         ),
-                        Text(
-                          'Medicine',
-                          style: TextStyle(color: Colors.white),
-                        )
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                  Container(
-                    width: 170,
-                    height: 150,
+                  MenuCard(
+                    label: 'Skin Care',
+                    imagePath: 'images/personal.webp',
                     color: Colors.pinkAccent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        SizedBox(width: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(90),
-                            image: DecorationImage(
-                              image: AssetImage('images/personal.webp'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          height: 80,
-                          width: 80,
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SkinCare(),
                         ),
-                        SizedBox(
-                          width: 5,
+                      );
+                    },
+                  )
+                ],
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  MenuCard(
+                    label: 'Baby & Mom',
+                    imagePath: 'images/mom.webp',
+                    color: Colors.blueGrey,
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BabyMom(),
                         ),
-                        Expanded(
-                          child: Text(
-                            'Personal Health Care',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
-                      ],
-                    ),
+                      );
+                    },
                   ),
+                  MenuCard(
+                    label: 'Medical Devices',
+                    imagePath: 'images/device.jpg',
+                    color: Colors.blue,
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Equipment(),
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
               SizedBox(
@@ -177,133 +190,72 @@ class Dashboard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    width: 170,
-                    height: 150,
-                    color: Color(0xFF545454),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        SizedBox(width: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(90),
-                            image: DecorationImage(
-                              image: AssetImage('images/device.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          height: 80,
-                          width: 80,
+                  MenuCard(
+                    label: 'Vitamin & Supplement',
+                    imagePath: 'images/vitamins.webp',
+                    color: Color(0xFF393e46),
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Vitamins(),
                         ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            'Medical Devices',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 170,
-                    height: 150,
-                    color: Colors.deepPurpleAccent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        SizedBox(width: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(90),
-                            image: DecorationImage(
-                              image: AssetImage('images/mom.webp'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          height: 80,
-                          width: 80,
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            'Mom, Baby care',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        SizedBox(width: 5),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
               SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    width: 170,
-                    height: 150,
-                    color: Color(0xFFcab29a),
-                    child: Row(
-                      children: <Widget>[
-                        SizedBox(width: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(90),
-                            image: DecorationImage(
-                              image: AssetImage('images/vitamins.webp'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          height: 80,
-                          width: 80,
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            'Vitamins Supplements',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 170,
-                    height: 150,
-                    color: Color(0xFFf89679),
-                    child: Row(
-                      children: <Widget>[
-                        SizedBox(width: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(90),
-                            image: DecorationImage(
-                              image: AssetImage('images/offer.png'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          height: 80,
-                          width: 80,
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            'Special Offers',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
+                height: 15,
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class MenuCard extends StatelessWidget {
+  final String label;
+  final String imagePath;
+  final Color color;
+  final Function onPress;
+  const MenuCard({this.label, this.imagePath, this.color, this.onPress});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPress,
+      child: Container(
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        width: 170,
+        height: 150,
+        child: Row(
+          children: <Widget>[
+            SizedBox(width: 10),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(90),
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              height: 80,
+              width: 80,
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                label,
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
         ),
       ),
     );
